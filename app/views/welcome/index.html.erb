@@ -2,21 +2,24 @@
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas">
           <div class="well sidebar-nav">
           <div class="nav nav-list">
+            <!-- Split button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger">月份</button>
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <% @months.each do |month|%>
+                  <li><a href="<%=month%>"><%=month%>月</a></li>
+                <% end%>
+              </ul>
+            </div>
+
 
             <a class="btn btn-success" href="http://nb.yixia.com/miaopai/fl.php?d=ipa">IOS</a>
             <a class="btn btn-success" href="http://nb.yixia.com/miaopai/fl.php?d=apk">android</a>
-
-            
-          <h3 style="padding-bottom:10px">扫描安装最新版本</h3>
-          <h5>创建于:<?php echo date('Y-m-d H:i:s',filemtime($files[0]))?></h5>
-         <div id="code"></div>
           </div>
-            <ul class="nav nav-list">
-              <li class="nav-header">月份</li>
-              <% @months.each do |month|%>
-              	<li class="active"><a href=""><%=month%></a></li>
-              <% end%>
-            </ul>
+        
           </div><!--/.well -->
         </div><!--/span-->
         </div>
