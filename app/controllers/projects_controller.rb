@@ -23,8 +23,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Article.find(params[:id])
-    logger.info project
+    @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_url
   end
