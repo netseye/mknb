@@ -1,0 +1,53 @@
+   <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas">
+          <div class="well sidebar-nav">
+          <div class="nav nav-list">
+
+            <a class="btn btn-success" href="http://nb.yixia.com/miaopai/fl.php?d=ipa">IOS</a>
+            <a class="btn btn-success" href="http://nb.yixia.com/miaopai/fl.php?d=apk">android</a>
+
+            
+          <h3 style="padding-bottom:10px">扫描安装最新版本</h3>
+          <h5>创建于:<?php echo date('Y-m-d H:i:s',filemtime($files[0]))?></h5>
+         <div id="code"></div>
+          </div>
+            <ul class="nav nav-list">
+              <li class="nav-header">月份</li>
+              <% @months.each do |month|%>
+              	<li class="active"><a href=""><%=month%></a></li>
+              <% end%>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="col-xs-12 col-sm-9">
+		<table class="table table-bordered table-striped">
+		    <thead>
+		      <tr>
+		        <th>文件名</th>
+		        <th>日期</th>
+		        <th>安装</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    <% @ipas.each do |ipa|  %>
+		      <tr>
+		        <td><a href="<%= "#{@BASE_URL}#{ipa}"%>"><%= File.basename(ipa)%></a></td>
+		        <td><%= File.mtime(ipa)%></td>
+		        <td>
+    		        <a class="btn btn-primary btn-large"
+    		        <% if File.extname(ipa) == '.ipa' %>
+        		      href="itms-services://?action=download-manifest&url=https://nb.vitamio.org/miaopai/install.php%3Fipa%3D<%=ipa%>">安装</a> 
+        		      <% else %>
+            		         href="<?php echo $config['site']['baseurl'];?>/<?php echo $v?>">安装</a>  
+            		  <% end %>
+		        <?php if ($member['ip'] == '10.10.68.70') {?>
+    		      <a class="btn btn-primary btn-large" href="fl.php?action=remove&ipa=<?php echo $v;?>">删除</a>  
+		        <?php }?>
+			</td>
+		      </tr>
+			<% end %>
+		    </tbody>
+		  </table>
+        </div>
+      </div>
